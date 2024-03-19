@@ -56,7 +56,7 @@ Once the text data is transformed into TF-IDF vectors, these vectors serve as in
 
 Methods like Word2Vec or GloVe convert words into vectors, capturing semantic relationships.
 
-## 5. Modeling
+## 4. Modeling
 
 This project employs machine learning models to classify the sentiment of financial news articles. Two main models are used:
 
@@ -66,13 +66,80 @@ SVM is a robust classifier known for its effectiveness in high-dimensional space
 ### Sentiment Analyzer Package
 In addition to SVM, we compare our results with a sentiment analyzer package, which offers a pre-trained model for sentiment analysis. This comparison aims to benchmark our custom SVM model against a standard tool in the field. The sentiment analyzer provides a quick, general assessment of text sentiment, serving as a useful reference point for evaluating the effectiveness and accuracy of our SVM model in capturing the nuances of financial news sentiment.
 
-## 6. Sentiment Analysis
+## 5. Sentiment Analysis and Evaluation
 
-Sentiment analysis categorizes financial news sentiment, assessing its potential influence on stock market trends. This involves not just identifying sentiment but understanding the context through negation handling and feature extraction methods.
+After preprocessing and feature extraction, we apply Support Vector Machine (SVM) models to perform sentiment analysis on financial news articles. The goal is to classify each article into one of three sentiment categories: positive, negative, or neutral.
 
-## 7. Evaluation
+### Sentiment Analysis Using SVM
 
-We assess model performance using accuracy, precision, recall, and F1-score, enabling us to fine-tune our approach and improve prediction capabilities.
+The SVM model is particularly suited for this task due to its effectiveness in handling high-dimensional data, such as text represented by TF-IDF vectors. We trained the SVM model on a labeled dataset of financial news articles, where each article was assigned a sentiment label based on its content.
+
+### Evaluation Metrics
+
+To assess the performance of our sentiment analysis models, we use several evaluation metrics:
+
+#### Accuracy
+Accuracy is the measure of all correct predictions (true positives, true negatives and true neutrals) made by the model over the total number of cases examined.
+
+#### Precision (Positive Predictive Value)
+Precision measures the proportion of true positive results in the total number of positive predictions made.
+
+#### Recall (Sensitivity)
+Recall measures the proportion of true positive results in the total number of actual positives.
+
+#### F1 Score
+The F1 Score is the harmonic mean of precision and recall, providing a balance between the two metrics for cases where one might be more important than the other.
+
+<img width="273" alt="Screenshot 2024-03-20 at 00 24 01" src="https://github.com/alperencanbey/Financial-News-Sentiment-Analysis/assets/88103433/98ca062a-a283-4224-8ec0-88d447b640f7">
+
+<img width="570" alt="Screenshot 2024-03-20 at 00 22 51" src="https://github.com/alperencanbey/Financial-News-Sentiment-Analysis/assets/88103433/8d030ad2-f8c9-47dd-af5c-d926a49d50ea">
+
+
+
+# Variable Construction Formulas and Explanations
+
+Understanding the impact of financial news sentiment on stock market movements involves constructing several key variables. Below, we detail these variables along with their mathematical definitions and explanations.
+
+## Net Sentiment Score
+
+The Net Sentiment Score represents the difference between the number of positive and negative articles, giving an overall sentiment direction for a given time period.
+
+"Net Sentiment Score = (Number of Positive Articles) - (Number of Negative Articles)"
+
+![Net Sentiment Score Equation](URL_TO_NET_SENTIMENT_SCORE_IMAGE)
+
+This score helps identify whether the overall sentiment for the period is more positive or negative, which can be correlated with market movements.
+
+## Sentiment Balance
+
+The Sentiment Balance measures the ratio of positive articles to the total number of sentiment-bearing articles, indicating the prevalence of positive sentiment.
+
+"Sentiment Balance = Number of Positive Articles / (Number of Positive Articles + Number of Negative Articles)"
+
+![Sentiment Balance Equation](URL_TO_SENTIMENT_BALANCE_IMAGE)
+
+A higher Sentiment Balance suggests a predominance of positive sentiment, which may influence market optimism.
+
+## Sentiment Diversity
+
+Sentiment Diversity uses Shannon entropy to quantify the uniformity or diversity of sentiment in news articles, considering all sentiment categories.
+
+"Sentiment Diversity = -sum(p_i * log(p_i)) over all i in {positive, negative, neutral}"
+
+![Sentiment Diversity Equation](URL_TO_SENTIMENT_DIVERSITY_IMAGE)
+
+This variable captures how varied the sentiment is, with higher values indicating a broader range of sentiments being expressed.
+
+## Sentiment Momentum
+
+Sentiment Momentum captures the change in sentiment over time, highlighting shifts in the sentiment landscape from one day to the next.
+
+"Sentiment Momentum on day t = Net Sentiment Score on day t - Net Sentiment Score on day t-1"
+
+![Sentiment Momentum Equation](URL_TO_SENTIMENT_MOMENTUM_IMAGE)
+
+By measuring day-to-day changes, Sentiment Momentum can reveal trends in sentiment that may precede market reactions.
+
 
 ## 8. Integration and Automation
 
