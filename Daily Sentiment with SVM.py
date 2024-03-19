@@ -11,10 +11,9 @@ import finnhub
 import time
 import datetime
 from datetime import timedelta
-finnhub_client = finnhub.Client(api_key="c4eloviad3ifs61iimpg")
+finnhub_client = finnhub.Client(api_key="insert your API key for Finnhub")
 import json
 import pandas as pd
-
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn import svm
 from sklearn.metrics import classification_report
@@ -31,8 +30,6 @@ company_df = pd.read_csv(r'C:\Users\Alperen Canbey\Downloads\cik_ticker.csv')
 
 tickers = company_df.ticker[0:len(company_df)]
 #company = company_df[0:300]
-
-
 
 with open('dataset_unique.pickle', 'rb') as output_train_unique_balanced:
     training_data = pickle.load(output_train_unique_balanced)
