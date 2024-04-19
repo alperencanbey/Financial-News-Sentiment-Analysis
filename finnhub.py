@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Aug 18 23:26:00 2021
-
 @author: Alperen Canbey
 """
 
